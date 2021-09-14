@@ -11,9 +11,8 @@ export const useStore = create<State>(set => ({
     setTimer: (timerEndTime: Date) => set(state => ({ timerEndTime }))
 }));
 
-const socket = io('http://localhost:8080', { path: '/api/listen' });
+const socket = io({ path: '/api/listen' });
 
 socket.on('@ozzonair/TIMER_SET', (value) => {
-    console.log('new timer set', value);
     useStore.setState({ timerEndTime: new Date(value) });
 })

@@ -2,7 +2,7 @@ const setTimer = (durationInSeconds: number) => {
     const endTime = new Date();
     endTime.setTime(endTime.getTime() + 1000 * durationInSeconds);
 
-    fetch('http://localhost:8080/timer', {
+    fetch('/api/timer', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
