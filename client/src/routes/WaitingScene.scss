@@ -13,17 +13,32 @@
 .waiting-scene__main {
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  width: 100%;
+  padding-left: 33%;
+
+
+}
+
+.waiting-scene__label {
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .waiting-scene__countdown {
-  font-size: 72px;
-  font-weight: bold;
+  font-size: 164px;
+  font-weight: 700;
+  line-height: 1.3em;
+  color: rgba(#BC146C, 1);
+  //text-shadow: 0 0 10px rgba(0,0,0,.5), 2px 2px 10px rgba(0,0,0,0);
 
-  color: rgba(255,255,255,1);
-
-  height: 100px;
+  height: 216px;
+  width: 433px;
   transition: height 1s ease-in-out, color 0.5s ease-in-out 0.5s;
+
+  margin-left: -128px;
 }
 
 .waiting-scene__countdown.waiting-scene__countdown--exit {
@@ -33,21 +48,24 @@
 .waiting-scene__countdown.waiting-scene__countdown--enter,
 .waiting-scene__countdown.waiting-scene__countdown--exit {
   height: 0;
-  color: rgba(255,255,255,0);
+  color: rgba(#BC146C, 0);
 }
 
 .waiting-scene__countdown--text-fade-in {
   animation: fade-in 2s;
 }
+.waiting-scene__countdown--text-faded-in {
+  width: auto;
+}
 
 @keyframes fade-in {
   0% {
-    color: rgba(255,255,255,1);
+    color: rgba(#BC146C,1);
   }
   50% {
-    color: rgba(255,255,255,0);
+    color: rgba(#BC146C,0);
   }
   100% {
-    color: rgba(255,255,255,1);
+    color: rgba(#BC146C,1);
   }
 }

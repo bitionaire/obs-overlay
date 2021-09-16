@@ -1,0 +1,20 @@
+.logo {
+  height: 45px;
+  width: 140px;
+}
+
+.logo * {
+  shape-rendering: geometricPrecision;
+}
+
+.logo__bubble {
+  fill: #BC146C;
+}
+
+.logo__on-air {
+  fill: #fff;
+}
+
+.logo__name {
+  fill: #fff;
+}

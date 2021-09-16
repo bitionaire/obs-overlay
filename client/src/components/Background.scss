@@ -1,0 +1,56 @@
+.background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: -320px;
+
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-gap:0;
+
+  justify-items: center;
+  align-items: center;
+
+  background: desaturate(darken(#BC146C, 38%), 85%);
+  z-index: -1;
+}
+
+.background .logo {
+  opacity: 1;
+  transition: all 1s ease-in-out;
+  overflow: visible;
+}
+
+.background .logo__bubble {
+  fill: desaturate(darken(#BC146C, 39.019%), 85%);
+  transition: all 1s ease-in-out;
+}
+.background .logo__name {
+  fill: desaturate(darken(#BC146C, 39%), 85%);
+  transition: all 1s ease-in-out;
+}
+.background .logo__on-air {
+  display: none;
+}
+
+.background > div:nth-child(14n + 8),
+.background > div:nth-child(14n + 9),
+.background > div:nth-child(14n + 10),
+.background > div:nth-child(14n + 11),
+.background > div:nth-child(14n + 12),
+.background > div:nth-child(14n + 13),
+.background > div:nth-child(14n + 14) {
+  margin-left: -100%;
+}
+
+.background .logo__bubble.logo__bubble--fill-primary {
+  fill: desaturate(rgba(#BC146C,.5), 90%);
+  transform: scale(1.2);
+  transform-origin: left;
+}
+
+.background .logo.logo--hide {
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}

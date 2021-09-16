@@ -18,10 +18,10 @@ ReactDOM.render(
                   <AdminPage />
               </Route>
               <Route path="/start">
-                  <WaitingScene label="about to start" />
+                  <WaitingScene label="stream starting" />
               </Route>
               <Route path="/pause">
-                  <WaitingScene label="taking a short break" />
+                  <WaitingScene label="taking a break" />
               </Route>
               <Route path="/">
                   <ul>
