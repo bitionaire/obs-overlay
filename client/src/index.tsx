@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import AdminPage from "./routes/AdminPage";
 import './index.scss';
+import EndScene from "./routes/EndScene";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,11 +24,15 @@ ReactDOM.render(
               <Route path="/pause">
                   <WaitingScene label="taking a break …" />
               </Route>
+              <Route path="/end">
+                  <EndScene />
+              </Route>
               <Route path="/">
                   <ul>
                       <li><Link to="/admin">Admin panel</Link></li>
                       <li><Link to="/start">Starting scene</Link></li>
                       <li><Link to="/pause">Pause scene</Link></li>
+                      <li><Link to="/end">End scene</Link></li>
                   </ul>
               </Route>
           </Switch>
