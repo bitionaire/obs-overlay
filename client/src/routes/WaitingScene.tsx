@@ -13,6 +13,10 @@ const getRemainingSeconds = (endTime?: Date) => {
 
     const now = new Date();
     const seconds = Math.floor((endTime.getTime() - now.getTime()) / 1000);
+
+    if (seconds < 0) {
+        return MAX_COUNTER;
+    }
     return seconds > 0 ? seconds : 0;
 }
 
@@ -34,7 +38,7 @@ const WaitingScene: React.FC<WaitingSceneProps> = ({ label}) => {
         if (ref.current !== timerEndTime) {
             ref.current = timerEndTime;
             setShowCountdown(false);
-            if (timerEndTime) {
+            if (timerEndTime && getRemainingSeconds(timerEndTime) > MAX_COUNTER) {
                 const timer = setInterval(() => {
                     setCounter(getRemainingSeconds(timerEndTime));
                     setShowCountdown(true);
@@ -66,6 +70,7 @@ const WaitingScene: React.FC<WaitingSceneProps> = ({ label}) => {
             <Background />
 
             <main className="waiting-scene__main">
+                <span className="waiting-scene__label">{label}</span>
                 <CSSTransition
                     classNames={{
                         enter: 'waiting-scene__countdown--enter',
@@ -85,7 +90,6 @@ const WaitingScene: React.FC<WaitingSceneProps> = ({ label}) => {
                 >
                     <div ref={nodeRef}>{text}</div>
                 </CSSTransition>
-                <span className="waiting-scene__label">{label}</span>
             </main>
         </div>
     );

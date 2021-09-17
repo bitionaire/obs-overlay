@@ -14,6 +14,20 @@
 
   background: desaturate(darken(#BC146C, 38%), 85%);
   z-index: -1;
+
+  animation: marquee 40s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-160px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .background .logo {
