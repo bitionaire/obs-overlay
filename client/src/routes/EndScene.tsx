@@ -17,9 +17,7 @@ const EndScene: FC = () => {
         <div className="end-scene">
             <Background />
 
-            <main className="end-scene__main">
-                <span className="end-scene__label">The end</span>
-            </main>
+            <div className="end-scene__label">The end</div>
 
             {followers.length > 0 && (
                 <div className="end-scene__credits">
