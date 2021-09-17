@@ -1,0 +1,41 @@
+.countdown {
+  font-size: 164px;
+  font-weight: 700;
+  line-height: 1.3em;
+  color: rgba(#BC146C, 1);
+
+  height: 216px;
+  width: 433px;
+  transition: height 1s ease-in-out, color 0.5s ease-in-out 0.5s;
+
+  margin-left: -14px;
+}
+
+.countdown.countdown--exit {
+  transition: height 1s ease-in-out, color 0.5s ease-in-out;
+}
+
+.countdown.countdown--enter,
+.countdown.countdown--exit {
+  height: 0;
+  color: rgba(#BC146C, 0);
+}
+
+.countdown--text-fade-in {
+  animation: fade-in 2s;
+}
+.countdown--text-faded-in {
+  width: auto;
+}
+
+@keyframes fade-in {
+  0% {
+    color: rgba(#BC146C,1);
+  }
+  50% {
+    color: rgba(#BC146C,0);
+  }
+  100% {
+    color: rgba(#BC146C,1);
+  }
+}
