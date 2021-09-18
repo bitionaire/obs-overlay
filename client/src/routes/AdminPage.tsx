@@ -1,4 +1,5 @@
 import Logo from "../components/Logo";
+import {useRef} from "react";
 
 const setTimer = (durationInSeconds: number) => {
     const endTime = new Date();
@@ -15,7 +16,21 @@ const setTimer = (durationInSeconds: number) => {
     });
 }
 
+const handleShowTitle = (title: string) => {
+    fetch('/api/title', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ title })
+    }).catch(() => {
+        console.error('failed to set timer');
+    });
+}
+
 const AdminPage = () => {
+    const titleInput = useRef(null);
+
     return (
         <div>
             <Logo />
@@ -25,6 +40,9 @@ const AdminPage = () => {
             <button onClick={() => setTimer(3 * 60)}>3 min.</button>
             <button onClick={() => setTimer(5 * 60)}>5</button>
             <button onClick={() => setTimer(10 * 60)}>10</button>
+
+            <input placeholder="Title" ref={titleInput} />
+            <button onClick={() => { handleShowTitle((titleInput.current as any).value)}}>Show title</button>
         </div>
     );
 }

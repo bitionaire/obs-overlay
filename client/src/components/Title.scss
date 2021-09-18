@@ -1,0 +1,62 @@
+$title__animation-duration: 3s;
+$title__square-height: 64px;
+$title__margin: 64px;
+
+.title__square {
+  position: fixed;
+  bottom: -$title__margin - $title__square-height;
+  left: $title__margin;
+
+  height: $title__square-height;
+  width: 6px;
+
+  background: #BC146C;
+
+  transition: all .5s ease-in-out;
+}
+
+.title--enter .title__square {
+  bottom: $title__margin;
+}
+
+.title--active .title__square {
+  bottom: $title__margin;
+  left: $title__margin;
+  height: $title__square-height;
+}
+
+.title--exit .title__square {
+  bottom: $title__margin + $title__square-height;
+  left: $title__margin;
+  height: 0;
+  transition-delay: .5s;
+}
+
+.title__wrapper {
+  position: fixed;
+  bottom: $title__margin;
+  left: $title__margin + 6px;
+  height: $title__square-height;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.title__label {
+  padding-left: 16px;
+  font-size: 32px;
+  transform: translateX(-100%);
+
+  transition: all .5s ease-in-out;
+}
+
+.title--enter .title__label {
+  transform: translateX(0);
+  transition-delay: .5s;
+}
+
+.title--active .title__label {
+  transform: translateX(0);
+}

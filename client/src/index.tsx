@@ -10,6 +10,7 @@ import {
 import AdminPage from "./routes/AdminPage";
 import './index.scss';
 import EndScene from "./routes/EndScene";
+import Overlay from "./routes/Overlay";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,9 @@ ReactDOM.render(
           <Switch>
               <Route path="/admin">
                   <AdminPage />
+              </Route>
+              <Route path="/overlay">
+                  <Overlay />
               </Route>
               <Route path="/start">
                   <WaitingScene label="starting …" />
@@ -30,6 +34,7 @@ ReactDOM.render(
               <Route path="/">
                   <ul>
                       <li><Link to="/admin">Admin panel</Link></li>
+                      <li><Link to="/overlay">Overlay</Link></li>
                       <li><Link to="/start">Starting scene</Link></li>
                       <li><Link to="/pause">Pause scene</Link></li>
                       <li><Link to="/end">End scene</Link></li>

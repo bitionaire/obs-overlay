@@ -38,6 +38,11 @@ app.post('/api/timer', (req: Request<{ endTime: number }>, res: Response) => {
     res.status(201).send();
 });
 
+app.post('/api/title', (req: Request<{ title: string}>, res: Response) => {
+    io.emit('@ozzonair/SET_TITLE', req.body.title);
+    res.status(201).send();
+})
+
 app.get('/api/followers', async (req: Request, res: Response) => {
     const userId = await apiClient.users.getUserByName('ozzonair');
 
