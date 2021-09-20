@@ -1,69 +1,62 @@
 import express, {Request, Response} from "express";
-import { Server } from "socket.io";
 import bodyParser from 'body-parser';
-import { ApiClient } from '@twurple/api';
-import { ClientCredentialsAuthProvider } from '@twurple/auth';
 import dotenv from 'dotenv';
+import initializeTwitchClient from "./twitch";
+import initializeWebsocketServer, {getWebsocketServer} from "./websocket";
+import {getState, setState} from "./state";
 
 const result = dotenv.config();
 if (result.error) {
     throw result.error;
 }
 
-const clientId = process.env.TWITCH_CLIENT_ID;
-const clientSecret = process.env.TWITCH_CLIENT_SECRET;
-
-const authProvider = new ClientCredentialsAuthProvider(clientId, clientSecret);
-const apiClient = new ApiClient({ authProvider });
-
-/*const user = apiClient.helix.users.getUserByName("ozzonair").then((user) => {
-    console.log("user", user.displayName);
-});*/
-
 // configuration of the server
-const app = express();
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json())
-const serverPort = 8080;
+const initServer = async (serverPort: number = 8080) => {
+    const app = express();
 
-// internal state of the server
-let timerEndTime: number = undefined;
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
+    app.use(bodyParser.json());
 
-// all endpoints
-app.post('/api/timer', (req: Request<{ endTime: number }>, res: Response) => {
-    timerEndTime = req.body.endTime;
-    io.emit('@ozzonair/TIMER_SET', timerEndTime);
-    res.status(201).send();
-});
+    const { apiClient, userId } = await initializeTwitchClient(app);
 
-app.post('/api/title', (req: Request<{ title: string}>, res: Response) => {
-    io.emit('@ozzonair/SET_TITLE', req.body.title);
-    res.status(201).send();
+    // all endpoints
+    app.post('/api/timer', (req: Request<{ endTime: number }>, res: Response) => {
+        setState({ timerEndTime: req.body.endTime });
+        getWebsocketServer().emit('@ozzonair/TIMER_SET', getState().timerEndTime);
+        res.status(201).send();
+    });
+
+    app.post('/api/title', (req: Request<{ title: string}>, res: Response) => {
+        getWebsocketServer().emit('@ozzonair/SET_TITLE', req.body.title);
+        res.status(201).send();
+    })
+
+    app.get('/api/followers', async (req: Request, res: Response) => {
+        const followersRequest = await apiClient.users.getFollowsPaginated({ followedUser: userId });
+        const followers = await followersRequest.getAll();
+
+        res.json(followers.map(follower => follower.userDisplayName));
+    });
+
+    // starting the server
+    const server = app.listen( serverPort, async () => {
+        console.log(`server started at http://localhost:${ serverPort }`);
+        /* TODO await eventSubMiddleware.markAsReady();
+        await eventSubMiddleware.subscribeToChannelFollowEvents(userId, (event) => {
+            console.log(`${event.userDisplayName} just followed ${event.broadcasterDisplayName}!`);
+        });*/
+    });
+
+    // websocket stuff
+    initializeWebsocketServer(server);
+};
+
+initServer().catch((err) => {
+    console.error('failed to start server', err);
 })
 
-app.get('/api/followers', async (req: Request, res: Response) => {
-    const userId = await apiClient.users.getUserByName('ozzonair');
 
-    const followersRequest = await apiClient.users.getFollowsPaginated({ followedUser: userId });
-    const followers = await followersRequest.getAll();
 
-    res.json(followers.map(follower => follower.userDisplayName));
-});
 
-// starting the server
-const server = app.listen( serverPort, () => {
-    console.log( `server started at http://localhost:${ serverPort }` );
-});
-
-// websocket stuff
-const io = new Server(server, {
-    path: '/api/listen'
-});
-
-io.on('connection', (socket) => {
-    if (timerEndTime) {
-        socket.emit('@ozzonair/TIMER_SET', timerEndTime);
-    }
-});

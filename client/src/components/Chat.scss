@@ -1,0 +1,22 @@
+.chat {
+  position: fixed;
+  bottom: 25%;
+}
+
+.chat__toast {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat__toast::before {
+  display: block;
+  content: var(--chat-user);
+  background: red;
+}
+
+.chat__body, .chat__body * {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
