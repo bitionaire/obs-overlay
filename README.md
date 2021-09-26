@@ -16,8 +16,15 @@ You can then start the web application by executing...
 docker-compose up --build -d
 ```
 
-This will start the server and webapp on `http://localhost:8080`. 
+This will start the server and webapp on `http://localhost:8080` and can only be accessed from
+the local machine. 
 You can then start browsing and look for the parts you may be interested in.
+
+If you want to bind the app on another port you should pass the `LOCAL_IP` variable, e.g.
+
+```
+LOCAL_IP=192.168.178.20 docker-compose up --build -d
+```
 
 ## Contribute
 
