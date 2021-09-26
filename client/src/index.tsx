@@ -34,7 +34,9 @@ ReactDOM.render(
               <Route path="/">
                   <ul>
                       <li><Link to="/admin">Admin panel</Link></li>
-                      <li><Link to="/overlay">Overlay</Link></li>
+                      <li>
+                          <Link to="/overlay">Overlay</Link> | <Link to="/overlay?debug=true">Overlay (Debug)</Link>
+                      </li>
                       <li><Link to="/start">Starting scene</Link></li>
                       <li><Link to="/pause">Pause scene</Link></li>
                       <li><Link to="/end">End scene</Link></li>
