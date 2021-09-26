@@ -43,7 +43,7 @@
   font-size: 20px;
 }
 
-.end-scene__credits ul {
+.end-scene__followers {
   list-style: none;
   margin: 1.5em 0 0;
   padding: 0;
@@ -52,8 +52,9 @@
   font-weight: 600;
 }
 
-.end-scene__credits li {
+.end-scene__followers li {
   margin-bottom: .25em;
+  color: #bc146c;
 }
 
 @keyframes creditRoll {

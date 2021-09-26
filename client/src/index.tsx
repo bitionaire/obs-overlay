@@ -11,6 +11,7 @@ import AdminPage from "./routes/AdminPage";
 import './index.scss';
 import EndScene from "./routes/EndScene";
 import Overlay from "./routes/Overlay";
+import './i18n';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,10 +24,10 @@ ReactDOM.render(
                   <Overlay />
               </Route>
               <Route path="/start">
-                  <WaitingScene label="starting …" />
+                  <WaitingScene labelKey="start.title" />
               </Route>
               <Route path="/pause">
-                  <WaitingScene label="taking a break …" />
+                  <WaitingScene labelKey="pause.title" />
               </Route>
               <Route path="/end">
                   <EndScene />
