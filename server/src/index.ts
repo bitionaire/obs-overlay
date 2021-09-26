@@ -19,7 +19,7 @@ const initServer = async (serverPort: number = 8080) => {
     }));
     app.use(bodyParser.json());
 
-    const { apiClient, userId } = await initializeTwitchClient(app);
+    const { apiClient, eventSubMiddleware, userId } = await initializeTwitchClient(app);
 
     // all endpoints
     app.post('/api/timer', (req: Request<{ endTime: number }>, res: Response) => {
@@ -43,10 +43,11 @@ const initServer = async (serverPort: number = 8080) => {
     // starting the server
     const server = app.listen( serverPort, async () => {
         console.log(`server started at http://localhost:${ serverPort }`);
-        /* TODO await eventSubMiddleware.markAsReady();
+
+        await eventSubMiddleware.markAsReady();
         await eventSubMiddleware.subscribeToChannelFollowEvents(userId, (event) => {
-            console.log(`${event.userDisplayName} just followed ${event.broadcasterDisplayName}!`);
-        });*/
+            getWebsocketServer().emit('@ozzonair/NEW_FOLLOWER', event.userDisplayName);
+        });
     });
 
     // websocket stuff

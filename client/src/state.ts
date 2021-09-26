@@ -35,3 +35,7 @@ socket.on('@ozzonair/SET_TITLE', (value) => {
 socket.on('@ozzonair/CHAT_MESSAGE', ({ user, message }) => {
     toast(message, { containerId: "chat", style: { '--chat-user': user } as any });
 });
+
+socket.on('@ozzonair/NEW_FOLLOWER', (user) => {
+    toast(user, { containerId: "follower" });
+});

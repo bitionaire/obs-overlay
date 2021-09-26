@@ -1,24 +1,24 @@
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.min.css';
-import './Chat.scss';
+import './FollowerAlert.scss';
 
-const Chat = () => {
+const FollowerAlert = () => {
     return (
         <ToastContainer
-            containerId="chat"
-            position="bottom-right"
+            containerId="follower"
+            position="top-left"
             autoClose={10000}
             hideProgressBar={true}
             newestOnTop={false}
             rtl={false}
-            limit={4}
+            limit={1}
             closeButton={false}
-            className="chat"
-            bodyClassName="chat__body"
-            toastClassName="chat__toast"
+            className="follower-alert"
+            bodyClassName="follower-alert__body"
+            toastClassName="follower-alert__toast"
             enableMultiContainer
         />
     )
 }
 
-export default Chat;
+export default FollowerAlert;

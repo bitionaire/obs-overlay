@@ -14,19 +14,19 @@ const initializeTwitchClient = async (app: Express) => {
 
     const userId = await apiClient.users.getUserByName(process.env.TWITCH_USER);
 
-    /* TODO const twitchEventSubMiddleware = new EventSubMiddleware({
+    const twitchEventSubMiddleware = new EventSubMiddleware({
         apiClient,
         hostName: 'localhost',
         pathPrefix: '/api/twitch',
         secret: uuidv4()
     });
-    await twitchEventSubMiddleware.apply(app);*/
+    await twitchEventSubMiddleware.apply(app);
 
     // TODO initializeTwitchChatClient(authProvider)
 
     return {
         apiClient,
-        // TODO eventSubMiddleware: twitchEventSubMiddleware,
+        eventSubMiddleware: twitchEventSubMiddleware,
         userId
     }
 }
