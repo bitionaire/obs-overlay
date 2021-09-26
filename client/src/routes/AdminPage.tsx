@@ -1,7 +1,15 @@
-import Logo from "../components/Logo";
-import {useRef} from "react";
+import * as React from "react";
+import {useState} from "react";
 
-const setTimer = (durationInSeconds: number) => {
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import {ButtonGroup, Button, TextField} from "@mui/material";
+
+import './AdminPage.scss';
+
+
+const setTimer = (durationInSeconds: number) => () => {
     const endTime = new Date();
     endTime.setTime(endTime.getTime() + 1000 * durationInSeconds);
 
@@ -29,21 +37,55 @@ const handleShowTitle = (title: string) => {
 }
 
 const AdminPage = () => {
-    const titleInput = useRef(null);
+    const [tab, setTab] = useState(0);
+    const [title, setTitle] = useState('');
+
+    const handleTabChange = (e: React.SyntheticEvent, newTab: number) => {
+        setTab(newTab);
+    }
+
+    const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.target.value);
+    }
 
     return (
-        <div>
-            <Logo />
-            <h1>Timer</h1>
-            <button onClick={() => setTimer(0)}>0</button>
-            <button onClick={() => setTimer(5)}>5 sek.</button>
-            <button onClick={() => setTimer(3 * 60)}>3 min.</button>
-            <button onClick={() => setTimer(5 * 60)}>5</button>
-            <button onClick={() => setTimer(10 * 60)}>10</button>
+        <Box className="admin-page">
+            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <Tabs value={tab} onChange={handleTabChange}>
+                    <Tab label="Timer" />
+                    <Tab label="Title" />
+                    <Tab label="Settings" />
+                </Tabs>
+            </Box>
+            <Box className="admin-page__tab-panel">
+                {tab === 0 && (
+                    <>
+                        <Box>
+                            <ButtonGroup variant="contained">
+                                <Button onClick={setTimer(3 * 60)}>3 min.</Button>
+                                <Button onClick={setTimer(5 * 60)}>5 min.</Button>
+                                <Button onClick={setTimer(10 * 60)}>10 min.</Button>
+                            </ButtonGroup>
+                        </Box>
+                        <Box>
+                            <Button onClick={setTimer(0)} variant="contained">Reset</Button>
+                            <Button onClick={setTimer(5)} variant="outlined">Debug (5 sek.)</Button>
+                        </Box>
+                    </>
+                )}
 
-            <input placeholder="Title" ref={titleInput} />
-            <button onClick={() => { handleShowTitle((titleInput.current as any).value)}}>Show title</button>
-        </div>
+                {tab === 1 && (
+                    <>
+                        <TextField label="Title" placeholder="Some title here" variant="outlined" value={title} onChange={handleTitleChange} />
+                        <Button variant="contained" onClick={() => { handleShowTitle(title)}}>Show</Button>
+                    </>
+                )}
+
+                {tab === 2 && (
+                    <div>Test</div>
+                )}
+            </Box>
+        </Box>
     );
 }
 
