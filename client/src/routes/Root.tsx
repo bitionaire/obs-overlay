@@ -22,7 +22,7 @@ const Root = () => {
                 <ListItem>
                     <ListItemButton onClick={() => history.push('/admin')}>
                         <ListItemIcon>
-                            <SettingsIcon sx={{ color: 'white' }} />
+                            <SettingsIcon />
                         </ListItemIcon>
                         <ListItemText primary="Admin" />
                     </ListItemButton>
@@ -31,7 +31,7 @@ const Root = () => {
                 <ListItem>
                     <ListItemButton onClick={() => history.push('/overlay')}>
                         <ListItemIcon>
-                            <DesktopWindowsIcon sx={{ color: 'white' }} />
+                            <DesktopWindowsIcon />
                         </ListItemIcon>
                         <ListItemText primary="Overlay" />
                     </ListItemButton>
@@ -40,7 +40,7 @@ const Root = () => {
                 <ListItem>
                     <ListItemButton onClick={() => history.push('/overlay?debug=true')}>
                         <ListItemIcon>
-                            <DevicesIcon sx={{ color: 'white' }} />
+                            <DevicesIcon />
                         </ListItemIcon>
                         <ListItemText primary="Overlay (Debug)" />
                     </ListItemButton>
@@ -49,7 +49,7 @@ const Root = () => {
                 <ListItem>
                     <ListItemButton onClick={() => history.push('/start')}>
                         <ListItemIcon>
-                            <PlayCircleFilledIcon sx={{ color: 'white' }} />
+                            <PlayCircleFilledIcon />
                         </ListItemIcon>
                         <ListItemText primary="Start" />
                     </ListItemButton>
@@ -58,7 +58,7 @@ const Root = () => {
                 <ListItem>
                     <ListItemButton onClick={() => history.push('/pause')}>
                         <ListItemIcon>
-                            <PauseCircleFilledIcon sx={{ color: 'white' }} />
+                            <PauseCircleFilledIcon />
                         </ListItemIcon>
                         <ListItemText primary="Pause" />
                     </ListItemButton>
@@ -67,7 +67,7 @@ const Root = () => {
                 <ListItem>
                     <ListItemButton onClick={() => history.push('/end')}>
                         <ListItemIcon>
-                            <StopCircleIcon sx={{ color: 'white' }} />
+                            <StopCircleIcon />
                         </ListItemIcon>
                         <ListItemText primary="End" />
                     </ListItemButton>

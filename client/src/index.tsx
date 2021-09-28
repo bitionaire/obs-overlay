@@ -5,7 +5,6 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 import AdminPage from "./routes/AdminPage";
 import './index.scss';
@@ -14,13 +13,21 @@ import Overlay from "./routes/Overlay";
 import './i18n';
 import Root from "./routes/Root";
 
+import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
+
+const theme = createTheme({
+    palette: {
+        mode: 'dark',
+        primary: {
+            main: '#1976d2',
+        }
+    }
+});
+
 ReactDOM.render(
   <React.StrictMode>
       <Router>
           <Switch>
-              <Route path="/admin">
-                  <AdminPage />
-              </Route>
               <Route path="/overlay">
                   <Overlay />
               </Route>
@@ -33,8 +40,16 @@ ReactDOM.render(
               <Route path="/end">
                   <EndScene />
               </Route>
+
+              <Route path="/admin">
+                  <ThemeProvider theme={theme}>
+                      <AdminPage />
+                  </ThemeProvider>
+              </Route>
               <Route path="/">
+                  <ThemeProvider theme={theme}>
                     <Root />
+                  </ThemeProvider>
               </Route>
           </Switch>
       </Router>

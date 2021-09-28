@@ -1,5 +1,7 @@
+@import '../constants';
+
 .admin-page {
-  background: white;
+  background: $colors__admin-background;
   min-height: 100vh;
 }
 
