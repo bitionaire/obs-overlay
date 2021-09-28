@@ -1,0 +1,12 @@
+@import '../constants';
+
+.root {
+  background: rgb(18, 18, 18);
+
+  height: 100vh;
+  overflow: hidden;
+}
+
+.root__logo {
+  padding: 32px;
+}

@@ -12,6 +12,7 @@ import './index.scss';
 import EndScene from "./routes/EndScene";
 import Overlay from "./routes/Overlay";
 import './i18n';
+import Root from "./routes/Root";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -33,15 +34,7 @@ ReactDOM.render(
                   <EndScene />
               </Route>
               <Route path="/">
-                  <ul>
-                      <li><Link to="/admin">Admin panel</Link></li>
-                      <li>
-                          <Link to="/overlay">Overlay</Link> | <Link to="/overlay?debug=true">Overlay (Debug)</Link>
-                      </li>
-                      <li><Link to="/start">Starting scene</Link></li>
-                      <li><Link to="/pause">Pause scene</Link></li>
-                      <li><Link to="/end">End scene</Link></li>
-                  </ul>
+                    <Root />
               </Route>
           </Switch>
       </Router>

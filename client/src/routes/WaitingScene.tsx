@@ -51,7 +51,7 @@ const WaitingScene: FC<WaitingSceneProps> = (
     }
 
     const backgroundParameter = searchParams.get("background");
-    const showBackground = (backgroundParameter && backgroundParameter === 'true') || !(backgroundParameter && background)
+    const showBackground = (backgroundParameter && backgroundParameter === 'true') || (!backgroundParameter && background)
 
     return (
         <>
