@@ -1,3 +1,5 @@
+@import '../constants';
+
 .end-scene {
   display: flex;
   flex-direction: column;
@@ -33,7 +35,7 @@
 }
 
 .end-scene__credits-thx {
-  color: #BC146C;
+  color: $colors__accent;
   font-size: 2em;
   font-weight: 900;
 }
@@ -54,7 +56,7 @@
 
 .end-scene__followers li {
   margin-bottom: .25em;
-  color: #bc146c;
+  color: $colors__accent;
 }
 
 @keyframes creditRoll {

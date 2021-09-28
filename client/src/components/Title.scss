@@ -1,3 +1,5 @@
+@import '../constants';
+
 $title__animation-duration: 3s;
 $title__square-height: 64px;
 $title__margin: 64px;
@@ -10,7 +12,7 @@ $title__margin: 64px;
   height: $title__square-height;
   width: 6px;
 
-  background: #BC146C;
+  background: $colors__accent;
 
   transition: all .5s ease-in-out;
 }

@@ -24,10 +24,10 @@ ReactDOM.render(
                   <Overlay />
               </Route>
               <Route path="/start">
-                  <WaitingScene labelKey="start.title" />
+                  <WaitingScene labelKey="start.title" horizontalPosition="left" verticalPosition="center" padding="20%" background />
               </Route>
               <Route path="/pause">
-                  <WaitingScene labelKey="pause.title" />
+                  <WaitingScene labelKey="pause.title" horizontalPosition="right" />
               </Route>
               <Route path="/end">
                   <EndScene />

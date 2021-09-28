@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Gluten:wght@600&display=swap');
+@import 'constants.scss';
 
 body {
+  background-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+
   margin: 0;
   padding: 0;
 
   font-family: 'Montserrat', sans-serif;
-
-  background: black;
-  color: white;
+  color: $colors__primary;
   font-weight: 700;
 }

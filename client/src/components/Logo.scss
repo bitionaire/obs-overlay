@@ -1,3 +1,5 @@
+@import '../constants';
+
 .logo {
   height: 45px;
   width: 140px;
@@ -8,13 +10,13 @@
 }
 
 .logo__bubble {
-  fill: #BC146C;
+  fill: $colors__accent;
 }
 
 .logo__on-air {
-  fill: #fff;
+  fill: $colors__primary;
 }
 
 .logo__name {
-  fill: #fff;
+  fill: $colors__primary;
 }

@@ -1,3 +1,5 @@
+@import '../constants';
+
 .follower-alert {
   background: none;
   margin: 0;
@@ -14,7 +16,7 @@
   font-family: 'Gluten', cursive;
   font-size: 32px;
   font-weight: 600;
-  color: #bc146c;
+  color: $colors__accent;
 }
 
 .follower-alert__toast {
@@ -36,7 +38,7 @@
   letter-spacing: 1px;
   font-weight: 900;
   line-height: 24px;
-  color: white;
+  color: $colors__primary;
 }
 
 .follower-alert__toast::before {

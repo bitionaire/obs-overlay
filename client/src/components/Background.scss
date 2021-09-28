@@ -1,3 +1,5 @@
+@import '../constants';
+
 .background {
   position: fixed;
   top: 0;
@@ -12,7 +14,7 @@
   justify-items: center;
   align-items: center;
 
-  background: desaturate(darken(#BC146C, 36%), 85%);
+  background: desaturate(darken($colors__accent, 36%), 85%);
   z-index: -1;
 
   animation: marquee 40s ease-in-out infinite;
@@ -37,11 +39,11 @@
 }
 
 .background .logo__bubble {
-  fill: desaturate(darken(#BC146C, 39.019%), 85%);
+  fill: desaturate(darken($colors__accent, 39.019%), 85%);
   transition: all 1s ease-in-out;
 }
 .background .logo__name {
-  fill: desaturate(darken(#BC146C, 39%), 85%);
+  fill: desaturate(darken($colors__accent, 39%), 85%);
   transition: all 1s ease-in-out;
 }
 .background .logo__on-air {
@@ -59,7 +61,7 @@
 }
 
 .background .logo__bubble.logo__bubble--fill-primary {
-  fill: desaturate(rgba(#BC146C,.5), 90%);
+  fill: desaturate(rgba($colors__accent,.5), 90%);
   transform: scale(1.2);
   transform-origin: left;
 }

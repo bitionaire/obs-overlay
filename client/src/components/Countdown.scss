@@ -1,8 +1,10 @@
+@import '../constants';
+
 .countdown {
   font-size: 164px;
   font-weight: 700;
   line-height: 1.3em;
-  color: rgba(#BC146C, 1);
+  color: rgba($colors__accent, 1);
 
   height: 216px;
   width: 433px;
@@ -18,7 +20,7 @@
 .countdown.countdown--enter,
 .countdown.countdown--exit {
   height: 0;
-  color: rgba(#BC146C, 0);
+  color: rgba($colors__accent, 0);
 }
 
 .countdown--text-fade-in {
@@ -30,12 +32,12 @@
 
 @keyframes fade-in {
   0% {
-    color: rgba(#BC146C,1);
+    color: rgba($colors__accent,1);
   }
   50% {
-    color: rgba(#BC146C,0);
+    color: rgba($colors__accent,0);
   }
   100% {
-    color: rgba(#BC146C,1);
+    color: rgba($colors__accent,1);
   }
 }
