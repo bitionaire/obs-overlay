@@ -59,7 +59,7 @@ const WaitingScene: FC<WaitingSceneProps> = (
 
             <div className="waiting-scene" style={{ justifyContent, alignItems }}>
                 <main className="waiting-scene__main" style={{ padding }}>
-                    <span className="waiting-scene__label">{searchParams.get("label") || t(labelKey)}</span>
+                    <span className="waiting-scene__label" style={{ textAlign: (searchParams.get("countdownHorizontalPosition") || horizontalPosition) as any }}>{searchParams.get("label") || t(labelKey)}</span>
                     <Countdown />
                 </main>
             </div>
