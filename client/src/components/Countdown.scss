@@ -5,11 +5,14 @@
   font-weight: 700;
   line-height: 1.3em;
   color: rgba($colors__accent, 1);
+  height: 1.5em;
 
+  transition: height 1s ease-in-out, color 0.5s ease-in-out 0.5s;
+}
+
+.countdown--fullscreen {
   height: 216px;
   width: 433px;
-  transition: height 1s ease-in-out, color 0.5s ease-in-out 0.5s;
-
   margin-left: -14px;
 }
 

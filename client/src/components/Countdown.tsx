@@ -1,5 +1,5 @@
 import {useStore} from "../state";
-import React, {useEffect, useRef, useState} from "react";
+import React, {FC, useEffect, useRef, useState} from "react";
 import classNames from "classnames";
 import {CSSTransition} from "react-transition-group";
 import './Countdown.scss';
@@ -21,7 +21,11 @@ const getRemainingSeconds = (endTime?: Date) => {
 
 const MAX_COUNTER = -30;
 
-const Countdown = () => {
+export interface CountdownProps {
+    className?: string;
+}
+
+const Countdown : FC<CountdownProps> = ({ className }) => {
     const timerEndTime = useStore(state => state.timerEndTime);
 
     const [counter, setCounter] = useState(getRemainingSeconds(timerEndTime));
@@ -66,9 +70,10 @@ const Countdown = () => {
                 enter: 'countdown--enter',
                 exit: 'countdown--exit',
             }}
-            className={classNames('countdown', {
+            className={classNames('countdown', className, {
                 'countdown--text-fade-in': counter < 1,
-                'countdown--text-faded-in': counter < 0
+                'countdown--text-faded-in': counter < 0,
+                'countdown--fullscreen': !className
             })}
             in={showCountdown}
             timeout={{
